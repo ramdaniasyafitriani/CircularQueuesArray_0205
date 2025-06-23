@@ -1,27 +1,85 @@
+/**
+ * @mainpage documentation circular Queues
+ * @section introduction
+ * project ini merupakan project struktur data
+ * this project use strucur data queues, implements circular arrays..
+ * 
+ * @section operations
+ * - en queue for insert elements into queues
+ * - de queue for delete elements from queues 
+ * - show data / display data
+ * 
+ * @section How to use
+ * 1. insert
+ * 2. delete
+ * 3. display
+ * 4. exit
+ * 
+ * @author yProfil
+ * - Name : Ramdania Syafitriani
+ * - Nim : 20240140205
+ * - Class : E
+ * 
+ * @brief 
+ * @version 0.1
+ * @date 2025-06-23
+ * 
+ * @copyright Gibran@umy.ac.id (c) 2025
+ * 
+ */
+
+
 #include <iostream>
 using namespace std;
+
+/**
+ * @class Queues
+ * @brief this class is for operation queues
+ * 
+ */
 
 class Queues
 {
 private :
-    int FRONT, REAR, max = 5;
-    int queue_array[5];
+    /// private variable front for indicate first element
+    int FRONT; 
+    /// private variable rear for indicate last element
+    int REAR; 
+    /// private variable max for maximum capasity of element
+    int max = 5;
+    /// private variable queue_array to store elements
+    int queue_array[5]; /// private variable queue_array to store elements
 
 public :
+    /**
+     * @brief constructor a new queues object
+     * set default queues null
+     * with front = -1 and rear = -1
+     * 
+     */
     Queues()
     {
         FRONT = -1;
         REAR = -1;
     }
+    /**
+     * @brief method for entering data into a queue
+     * - menambahkan element baru ke dalam struktur circular queues
+     * - mengecek apakah antrian penuh atau tidak
+     * - mengecek apakah antrian kosong
+     * - apabila tidak penuh, tambahkan data ke posisi belakang (REAR) queue secara sirkular.
+     * - mengatur posisi FRONT dan REAR sesuai kondisi queue.
+     */
     void insert()
     {
-        int num;
-        cout << "Enter a number : ";
-        cin >> num;
-        cout << endl;
 
-        // cek apakah antrian penuh 
-        if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
+        int num; /// public variable num for indicate number in elements
+        cout << "Enter a number : "; 
+        cin >> num; 
+        cout << endl; 
+
+        //mengecek apakah antrian penuh 
+        if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1)) /// apabila 
         {
             cout << "\nQueue overflow\n";
             return;
@@ -44,7 +102,12 @@ public :
         queue_array [REAR] = num;
     }
 
+    /**
+     * @brief method for deleted data into a queues 
+     * 
+     */
     void remove()
+
     {
         // cek apakah antrian kosong 
         if (FRONT == - 1)
@@ -70,10 +133,15 @@ public :
         }
     }
 
+    /**
+     * @brief method for display data into a queues 
+     * menambahkan data kedalam posisi queues
+     * 
+     */
     void display()
     {
-        int FRONT_position = FRONT;
-        int REAR_position = REAR;
+        int FRONT_position = FRONT; /// menyimpan posisi depan di dalam variabel FRONT
+        int REAR_position = REAR; /// menyimpan posisi belakang di dalam variabel REAR
 
         // cek apakah antrian kosong 
         if (FRONT == - 1)
@@ -114,10 +182,14 @@ public :
     }
 };
 
+/**
+ * @brief menjalankan data agar dapat dieksekusi
+ * 
+ */
 int main()
 {
-    Queues q;
-    char ch;
+    Queues q; /// objek untuk menggunakan queues 
+    char ch; /// objek untuk menyimpan pilihan yang akan dipilih
 
     while (true)
     {
